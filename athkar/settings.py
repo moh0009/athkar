@@ -124,4 +124,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = "main/static"
 
-WSGI_APPLICATION = 'athkar.wsgi.application'
+WSGI_APPLICATION = 'athkar.wsgi.app'
