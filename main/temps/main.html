@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+<ul dir="rtl" class="bg-dark text-light list-group p-0 m-4 " style="list-style-type: none;">
+    {% for i, n in list %}
+        <a href="/athkar/{{ n }}" class="list-group-item hover " ><li class="p-3">{{ i }}</li></a>
+    {% endfor %}
+</ul>
+<script>
+    const hoverElements = document.getElementsByClassName("hover");
+    for (let i = 0; i < hoverElements.length; i++) {
+        hoverElements[i].addEventListener("mouseover", function() {
+            this.classList.add("active");
+        });
+        hoverElements[i].addEventListener("mouseleave", function() {
+            this.classList.remove("active");
+        });
+    }
+</script>
+{% endblock %}
+
+{% block soru %}
+    {% if user == 0 %}
+        <div class="col-md-3 d-flex flex-wrap align-items-center justify-content-center">
+            <a href="{% url 'main' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+                home
+            </a>
+            <a href="{% url 'signup' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+                signup
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+                login
+            </a>
+        </div>
+    {% else %}
+    <div class="col-md-3 d-flex flex-wrap align-items-center justify-content-center">
+        <a href="{% url 'profile' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            profile
+        </a>
+        <a href="{% url 'add' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            yours
+        </a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            logout
+        </a>
+        <a href="{% url 'main' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            home
+        </a>
+    </div>
+    {% endif %}
+{% endblock %}

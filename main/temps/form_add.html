@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block form %}
+{% load static %}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+        <form method="post" id="form">
+            <h1 class="h3 mb-3 text-center fw-bold">{{ h1 }}</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+        <button class="btn btn-primary mt-2" id="sh">hide</button>
+</div>
+
+<div class="container align-items-center justify-content-end mt-4 ">
+    {% for i in all %}
+    <div class="row align-items-center mb-4 border rounded-3">
+        <div class="col align-items-center p-3 text" dir="rtl">
+            {{ i.thkr }}
+        </div>
+        <div class="col-6 text-center  border-warning border-start border-4 bg-primary rounded-start-1 rounded-3 mw-100 justify-content-center align-items-center">
+            <div class="row align-items-center p-1">
+                <button type="button" class="btn btn-warning b">{{ i.repeat }}</button>
+            </div>                 
+            <div class="row align-items-center">
+                <div class="col">
+                    <button type="button" class="btn n">
+                        <img src="{% static 'imgs/restart.svg' %}" alt="restart icon" width="30px">
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn d">
+                        <img src="{% static 'imgs/delete.svg' %}" alt="restart icon" width="20px">
+                    </button>
+                </div>
+                <div class="col text-warning">
+                    {{ i.repeat }}
+                </div> 
+                <div class="col">
+                    {{ forloop.counter }}
+                </div> 
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    var list = [];
+    const btn_num = document.getElementsByClassName("b");
+    const btn_reset = document.getElementsByClassName("n");
+    const sh = document.getElementById("sh");
+    var form = document.getElementById("form");
+    const delet = document.getElementsByClassName("d");
+    const all = {{ json|safe }};
+    const csrftoken =  ('; '+document.cookie).split(`; csrftoken=`).pop().split(';')[0];
+
+    btn(btn_num,list,btn_reset)
+   
+
+    for (let i = 0; i < delet.length; i++) {
+        delet[i].onclick = function(){
+            console.log(all[i]["id"])
+        fetch("/add/", {
+            headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/json' // Set content type to JSON
+            },
+            method: 'DELETE',
+            body: JSON.stringify({ token: csrftoken, id: all[i]["id"] }) // Convert body to JSON format
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error)); // Handle any errors during the fetch operation
+            }        
+}
+
+    window.onload = function() {
+        sh.innerText = "hide";
+        form.style = "display:block;";
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+            sh.addEventListener("click",function(){
+                if (sh.innerText == "show"){
+                    sh.innerText = "hide";
+                    form.style = "display:block;";
+                }
+                else{
+                    sh.innerText = "show";
+                    form.style = "display:none;";
+                }
+            });
+        });
+</script>
+
+{% endblock %}
+
+{% block soru %}
+    <div class="col-md-3 d-flex flex-wrap align-items-center justify-content-center">
+        <a href="{% url 'profile' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            profile
+        </a>
+        <a href="{% url 'add' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            yours
+        </a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            logout
+        </a>
+        <a href="{% url 'main' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            home
+        </a>
+    </div>
+{% endblock %}

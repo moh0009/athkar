@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block form %}
+
+<div class="d-flex justify-content-center align-items-center">
+        <form method="post">
+            <h1 class="h3 mb-3 text-center fw-bold">{{ h1 }}</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+</div>
+{% if error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+
+{% endblock %}
+
+{% block soru %}
+    <div class="col-md-3 d-flex flex-wrap align-items-center justify-content-center">
+        <a href="{% url 'main' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            home
+        </a>
+        <a href="{% url 'signup' %}" class="btn btn-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            signup
+        </a>
+        <a href="{% url 'login' %}" class="btn btn-outline-primary m-1" tabindex="-1" role="button" aria-disabled="true">
+            login
+        </a>
+    </div>
+{% endblock %}
