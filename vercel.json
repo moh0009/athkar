@@ -1,14 +1,17 @@
 {
-    "builds": [
-      {
-        "src": "athkar/wsgi.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "athkar/wsgi.py"
-      }
-    ]
+  "builds": [
+    {
+      "src": "athkar/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "athkar/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "athkar.settings"
   }
+}
