@@ -10,8 +10,5 @@
       "src": "/(.*)",
       "dest": "athkar/wsgi.py"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "athkar.settings"
-  }
+  ]
 }
