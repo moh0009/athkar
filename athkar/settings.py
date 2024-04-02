@@ -126,6 +126,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_ROOT = "main/static"
+STATIC_ROOT = "main/static/"
 
-WSGI_APPLICATION = 'athkar.wsgi.application'
+WSGI_APPLICATION = 'athkar.wsgi.app'
