@@ -6,26 +6,16 @@
 <div class="container align-items-center justify-content-end mt-4 ">
     {% for i in num %}
     <div class="row align-items-center mb-4 border rounded-3">
-        <div class="col align-items-center p-3 text" dir="rtl">
+        <div class="col align-items-center p-3 " dir="rtl">
             {{ i.ARABIC_TEXT }}
         </div>
-        <div class="col-5 text-center  border-warning border-start border-4 bg-primary rounded-start-1 rounded-3 mw-100 justify-content-center align-items-center">
-            <div class="row align-items-center p-1">
-                <button type="button" class="btn btn-warning b">{{ i.REPEAT }}</button>
-            </div>                 
-            <div class="row align-items-center">
-                <div class="col ">
-                    <button type="button" class="btn n">
-                        <img src="{% static 'imgs/restart.svg' %}" alt="restart icon" width="30px">
-                    </button>
-                </div>
-                <div class="col text-warning">
-                    {{ i.REPEAT }}
-                </div> 
-                <div class="col">
-                    {{ forloop.counter }}
-                </div> 
-            </div>
+        <div class="col-1 text-center bg-primary rounded-2 rounded-end-0 p-3 m-0">
+            <button type="button" class="btn n">
+                <img src="{% static 'imgs/restart.svg' %}" alt="restart icon" width="20px">
+            </button>
+        </div>
+        <div class="col-5 text-center bg-primary rounded-3 rounded-start-0 p-3 ms-0 me-3 my-3">
+            <button type="button" class="btn btn-warning b w-100">{{ i.REPEAT }}</button>
         </div>
     </div>
     {% endfor %}
