@@ -10,4 +10,5 @@ urlpatterns = [
     path('athkar/<int:num>', views.athkar, name="athkar"),
     path('add/', views.thkr, name="add"),
     path('athkar/', views.main, name="main"),
+    path('/<int:num>', views.athkar, name="athkar"),
 ]
