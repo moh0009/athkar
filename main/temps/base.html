@@ -9,7 +9,7 @@
     <link rel="icon" href="{% static 'imgs/logo.svg' %}">
     <title>Document</title>
 </head>
-<body class="bg-dark text-light p-3">
+<body class="bg-dark text-light">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between border-bottom position-sticky top-0 bg-dark p-3 mb-4 z-1" style="--bs-bg-opacity: .5;">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="{% url 'main' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
@@ -19,9 +19,11 @@
       {% block soru %}{% endblock %}
     </header>
     <script src="{% static 'script.js' %}"></script>
-    {% block form %}{% endblock %}
-    {% block main %}{% endblock %}
-    {% block profile %}{% endblock %}
-    {% block athkar %}{% endblock %}
+    <div class="p-3">
+      {% block form %}{% endblock %}
+      {% block main %}{% endblock %}
+      {% block profile %}{% endblock %}
+      {% block athkar %}{% endblock %}
+    </div>
 </body>
 </html>
