@@ -18,18 +18,14 @@
         <div class="col align-items-center p-3 " dir="rtl">
             {{ i.tkr }}
         </div>
-        <div class="col-1 text-center bg-primary rounded-2 rounded-end-0 p-3 m-0">
-            <button type="button" class="btn n">
-                <img src="{% static 'imgs/restart.svg' %}" alt="restart icon" width="20px">
+        <div class="col-lg-5 col-xs-12 d-flex text-center bg-primary rounded-3 p-3 ms-0 me-3 my-3">
+            <button type="button" class="btn n col-xs-1">
+                <img src="/static/imgs/restart.svg" alt="restart icon" width="20px">
             </button>
-        </div>
-        <div class="col-1 text-center bg-primary p-3 m-0">
-            <button type="button" class="btn d">
+            <button type="button" class="btn d col-xs-1">
                 <img src="{% static 'imgs/delete.svg' %}" alt="restart icon" width="20px">
             </button>
-        </div>
-        <div class="col-5 text-center bg-primary rounded-3 rounded-start-0 p-3 ms-0 me-3 my-3">
-            <button type="button" class="btn btn-warning b w-100">{{ i.repeat }}</button>
+            <button type="button" class="btn col-xs-10 btn-warning b w-100"> {{ i.repeat }} </button>
         </div>
     </div>
     {% endfor %}
