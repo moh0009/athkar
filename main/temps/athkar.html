@@ -17,7 +17,7 @@
                     <button type="button" class="btn col-xs-10 btn-warning b w-100"> {{ i.REPEAT }} </button>
                 </div>
             {% else %}
-                {{ i.ARABIC_TEXT }}
+                <p dir="rtl"> {{ i.ARABIC_TEXT }} </p>
             {% endif %}
         </div>
     {% endfor %}
