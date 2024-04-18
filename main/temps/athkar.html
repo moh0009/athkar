@@ -5,17 +5,21 @@
 
 <div class="container align-items-center justify-content-end mt-4 ">
     {% for i in num %}
-    <div class="row align-items-center mb-4 border rounded-3 p-1">
-        <div class="col align-items-center p-3 " dir="rtl">
-            {{ i.ARABIC_TEXT }}
+    {% if i.REPEAT > 1 %}
+        <div class="row align-items-center mb-4 border rounded-3 p-1">
+            <div class="col align-items-center p-3 " dir="rtl">
+                {{ i.ARABIC_TEXT }}
+            </div>
+            <div class="col-lg-5 col-xs-12 d-flex text-center bg-primary rounded-3 p-3 ms-0 me-3 my-3">
+                <button type="button" class="btn n col-xs-2">
+                    <img src="/static/imgs/restart.svg" alt="restart icon" width="20px">
+                </button>
+                <button type="button" class="btn col-xs-10 btn-warning b w-100"> {{ i.REPEAT }} </button>
+            </div>
         </div>
-        <div class="col-lg-5 col-xs-12 d-flex text-center bg-primary rounded-3 p-3 ms-0 me-3 my-3">
-            <button type="button" class="btn n col-xs-2">
-                <img src="/static/imgs/restart.svg" alt="restart icon" width="20px">
-            </button>
-            <button type="button" class="btn col-xs-10 btn-warning b w-100"> {{ i.REPEAT }} </button>
-        </div>
-    </div>
+    {% else %}
+        {{ i.ARABIC_TEXT }}
+    {% endif %}
     {% endfor %}
 </div>
 <script src="{% static 'script.js' %}"></script>
